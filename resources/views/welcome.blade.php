@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Home')
 @section('content')
 <!-- Banner start -->
 <div class="banner bg-color-full" id="banner">

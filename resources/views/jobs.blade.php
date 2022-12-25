@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Jobs')
 @section('content')
 
 <!-- Sub banner start -->

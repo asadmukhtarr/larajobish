@@ -28,4 +28,16 @@ Route::get('/post-a-job', 'pagesController@create')->name('post.job');
 // explained Already
 Auth::routes(); // login , // register , // reset 
 // after login
-//Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function(){
+    Route::get('/post-a-job', 'pagesController@create')->name('post.job'); 
+    Route::get('test/afterlogin',function(){
+        return "Test After Loggin";
+    });   
+});
+// Route::middleware('seeker')->group(function(){
+
+// });
+// Route::middleware('admin')->group(function(){
+
+// });
+Route::get('/home', 'homeController@index')->name('home');
