@@ -28,11 +28,13 @@ Route::get('/post-a-job', 'pagesController@create')->name('post.job');
 // explained Already
 Auth::routes(); // login , // register , // reset 
 // after login
-Route::middleware('auth')->group(function(){
-    Route::get('/post-a-job', 'pagesController@create')->name('post.job'); 
-    Route::get('test/afterlogin',function(){
-        return "Test After Loggin";
-    });   
+Route::middleware('auth')->prefix('provider')->namespace('provider')->group(function(){
+    Route::get('/dashboard', 'pagesController@dashboard')->name('provider.dashboard');
+    Route::get('/manage-candiates', 'pagesController@applications')->name('provider.applications');
+    Route::get('/jobs','pagesController@jobs')->name('provider.jobs');
+    Route::get('/post-a-job', 'pagesController@create_job')->name('create.job'); 
+    Route::get('/settings', 'pagesController@settings')->name('provider.settings');  
+
 });
 // Route::middleware('seeker')->group(function(){
 

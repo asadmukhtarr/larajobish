@@ -81,7 +81,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('post.job') }}" class="nav-link link-color"><i class="flaticon-plus"></i> Post a Job</a>
+                        <a href="{{ route('create.job') }}" class="nav-link link-color"><i class="flaticon-plus"></i> Post a Job</a>
                     </li>
                 </ul>
             </div>
