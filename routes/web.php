@@ -32,7 +32,8 @@ Route::middleware('auth')->prefix('provider')->namespace('provider')->group(func
     Route::get('/dashboard', 'pagesController@dashboard')->name('provider.dashboard');
     Route::get('/manage-candiates', 'pagesController@applications')->name('provider.applications');
     Route::get('/jobs','pagesController@jobs')->name('provider.jobs');
-    Route::get('/post-a-job', 'pagesController@create_job')->name('create.job'); 
+    Route::get('/post-a-job', 'jobsController@create_job')->name('create.job'); 
+    Route::post('/save/job','jobsController@save')->name('posts.job');
     Route::get('/settings', 'pagesController@settings')->name('provider.settings');  
 
 });
