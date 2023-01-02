@@ -3,6 +3,12 @@
 @section('content')
 <div class="content-area5">
                     <div class="dashboard-content">
+                        @if ($message = Session::get('delete'))
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                         <div class="dashboard-header clearfix">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6"><h4>Manage Jobs</h4></div>
@@ -35,138 +41,36 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach($jobs as $job)
                                     <tr class="responsive-table">
                                         <td class="image">
                                             <a href="#"><img alt="my-properties-3" src="img/avatar/avatar-3.jpg" class="img-fluid"></a>
                                         </td>
                                         <td class="p-left-20">
                                             <div class="inner">
-                                                <h5><a href="#">Restaurant General Manager</a></h5>
+                                                <h5><a href="#">{{ $job->title }}</a></h5>
                                                 <ul>
-                                                    <li><i class="flaticon-work"></i> Hotel</li>
-                                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                                    <li><i class="flaticon-time"></i> Full Time</li>
+                                                    <li><i class="fa fa-money"></i> {{ $job->salary }} {{ $job->salary_type }}</li>
+                                                    <li><i class="flaticon-pin"></i> {{ $job->city }} </li>
+                                                    <li><i class="flaticon-time"></i> {{ $job->type }}</li>
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td class="hdn">Jan 31, 2019</td>
-                                        <td>7+ Applied</td>
-                                        <td>Active</td>
+                                        <td class="hdn"> {{ \Carbon\Carbon::parse($job->created_at)->diffforhumans() }}</td>
+                                        <td>0 Applied</td>
+                                        <td>
+                                           @if($job->status == 0)
+                                                Active
+                                           @else 
+                                                Closed
+                                           @endif
+                                        </td>
                                         <td class="actions">
                                             <a href="#"><i class="fa fa-pencil"></i></a>
-                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
+                                            <a href="{{ route('delete.job',$job->id) }}"><i class="delete fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
-                                    <tr class="responsive-table">
-                                        <td class="image">
-                                            <a href="#"><img alt="my-properties-3" src="img/avatar/avatar-3.jpg" class="img-fluid"></a>
-                                        </td>
-                                        <td class="p-left-20">
-                                            <div class="inner">
-                                                <h5><a href="#">Green Development Marketer</a></h5>
-                                                <ul>
-                                                    <li><i class="flaticon-work"></i> Zooms</li>
-                                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                                    <li><i class="flaticon-time"></i> Full Time</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td class="hdn">Jan 31, 2019</td>
-                                        <td>7+ Applied</td>
-                                        <td>Active</td>
-                                        <td class="actions">
-                                            <a href="#"><i class="fa fa-pencil"></i></a>
-                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="responsive-table">
-                                        <td class="image">
-                                            <a href="#"><img alt="my-properties-3" src="img/avatar/avatar-3.jpg" class="img-fluid"></a>
-                                        </td>
-                                        <td class="p-left-20">
-                                            <div class="inner">
-                                                <h5><a href="#">Restaurant General Manager</a></h5>
-                                                <ul>
-                                                    <li><i class="flaticon-work"></i> Hotel</li>
-                                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                                    <li><i class="flaticon-time"></i> Full Time</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td class="hdn">Jan 31, 2019</td>
-                                        <td>7+ Applied</td>
-                                        <td>Active</td>
-                                        <td class="actions">
-                                            <a href="#"><i class="fa fa-pencil"></i></a>
-                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="responsive-table">
-                                        <td class="image">
-                                            <a href="#"><img alt="my-properties-3" src="img/avatar/avatar-3.jpg" class="img-fluid"></a>
-                                        </td>
-                                        <td class="p-left-20">
-                                            <div class="inner">
-                                                <h5><a href="#">Development Marketer</a></h5>
-                                                <ul>
-                                                    <li><i class="flaticon-work"></i> Zooms</li>
-                                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                                    <li><i class="flaticon-time"></i> Full Time</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td class="hdn">Jan 31, 2019</td>
-                                        <td>7+ Applied</td>
-                                        <td>Active</td>
-                                        <td class="actions">
-                                            <a href="#"><i class="fa fa-pencil"></i></a>
-                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="responsive-table">
-                                        <td class="image">
-                                            <a href="#"><img alt="my-properties-3" src="img/avatar/avatar-3.jpg" class="img-fluid"></a>
-                                        </td>
-                                        <td class="p-left-20">
-                                            <div class="inner">
-                                                <h5><a href="#">Restaurant General Manager</a></h5>
-                                                <ul>
-                                                    <li><i class="flaticon-work"></i> Hotel</li>
-                                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                                    <li><i class="flaticon-time"></i> Full Time</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td class="hdn">Jan 31, 2019</td>
-                                        <td>7+ Applied</td>
-                                        <td>Active</td>
-                                        <td class="actions">
-                                            <a href="#"><i class="fa fa-pencil"></i></a>
-                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="responsive-table">
-                                        <td class="image">
-                                            <a href="#"><img alt="my-properties-3" src="img/avatar/avatar-3.jpg" class="img-fluid"></a>
-                                        </td>
-                                        <td class="p-left-20">
-                                            <div class="inner">
-                                                <h5><a href="#">Xero Development Marketer</a></h5>
-                                                <ul>
-                                                    <li><i class="flaticon-work"></i> Zooms</li>
-                                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                                    <li><i class="flaticon-time"></i> Full Time</li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                        <td class="hdn">Jan 31, 2019</td>
-                                        <td>7+ Applied</td>
-                                        <td>Active</td>
-                                        <td class="actions">
-                                            <a href="#"><i class="fa fa-pencil"></i></a>
-                                            <a href="#"><i class="delete fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

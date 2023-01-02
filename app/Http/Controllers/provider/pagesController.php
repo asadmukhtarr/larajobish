@@ -15,10 +15,6 @@ class pagesController extends Controller
     public function applications(){
         return view('provider.applications');
     }
-    // jobs 
-    public function jobs(){
-        return view('provider.jobs');
-    }
     //  settings ..
     public function settings(){
 
