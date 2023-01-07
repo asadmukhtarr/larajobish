@@ -35,6 +35,8 @@ Route::middleware('auth')->prefix('provider')->namespace('provider')->group(func
     Route::get('/job/delete/{id}','jobsController@delete')->name('delete.job');
     Route::get('/post-a-job', 'jobsController@create_job')->name('create.job'); 
     Route::post('/save/job','jobsController@save')->name('posts.job');
+    Route::get('/job/{id}','jobsController@editjob')->name('job.edit');
+    Route::post('/job/update/{id}','jobsController@updatejob')->name('update.job');
     Route::get('/settings', 'pagesController@settings')->name('provider.settings');  
 
 });

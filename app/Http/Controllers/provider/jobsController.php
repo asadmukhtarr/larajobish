@@ -46,6 +46,27 @@ class jobsController extends Controller
         //return $jobs;
         return view('provider.jobs',compact('jobs'));
     }
+    // edit job ..
+    public function editjob($id){
+        $job = job::find($id);
+        return view('provider.editpost',compact('job'));
+    }
+    public function updatejob(Request $request,$id){
+        $post = job::find($id);
+        $post->title = $request->title;
+        $post->category_id = $request->category;
+        $post->description = $request->description;
+        $post->type = $request->type;
+        $post->salary_type = $request->salary_type;
+        $post->salary = $request->salary;
+        $post->location = $request->location;
+        $post->city = $request->city;
+        $post->country = $request->country;
+        $post->user_id = Auth::id();
+        $post->save();
+        return redirect(route('provider.jobs'))->with('message','Job Posted Successfully');
+    }
+
     // delete job
     public function delete($id){
         $job = job::find($id);

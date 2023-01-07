@@ -9,6 +9,12 @@
                                 <strong>{{ $message }}</strong>
                             </div>
                         @endif
+                        @if ($message = Session::get('message'))
+                            <div class="alert alert-danger alert-block">
+                                <button type="button" class="close" data-dismiss="alert">×</button>	
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
                         <div class="dashboard-header clearfix">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6"><h4>Manage Jobs</h4></div>
@@ -66,7 +72,7 @@
                                            @endif
                                         </td>
                                         <td class="actions">
-                                            <a href="#"><i class="fa fa-pencil"></i></a>
+                                            <a href="{{ route('job.edit',$job->id) }}"><i class="fa fa-pencil"></i></a>
                                             <a href="{{ route('delete.job',$job->id) }}"><i class="delete fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
