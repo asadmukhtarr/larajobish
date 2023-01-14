@@ -66,7 +66,8 @@ class jobsController extends Controller
         $post->save();
         return redirect(route('provider.jobs'))->with('message','Job Posted Successfully');
     }
-
+    // pagesn
+    
     // delete job
     public function delete($id){
         $job = job::find($id);

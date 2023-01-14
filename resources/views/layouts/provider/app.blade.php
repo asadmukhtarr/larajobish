@@ -139,7 +139,11 @@
                         <!-- We will paste here condition if current user id provider then  show
                         provider sidebar otherwise show seeker sidebar
                     -->
+                    @if(Auth::user()->type == 0)
                         @include('layouts.sidebar.provider')
+                    @elseif(Auth::user()->type == 1)
+                        @include('layouts.sidebar.seeker')
+                    @endif
                     </div>
                 </div>
             </div>

@@ -24,9 +24,16 @@ Route::get('/contact','pagesController@contact')->name('contact');
 Route::get('/jobs', 'pagesController@jobs')->name('jobs');
 // post a job ..
 Route::get('/post-a-job', 'pagesController@create')->name('post.job');
-
+Route::get('/login','pagesController@login')->name('login');
+Route::post('/login/user','pagesController@logincheck')->name('login');
+Route::get('/sign-up','pagesController@create_user')->name('create.user');
+Route::post('/sign-up/save','pagesController@save_user')->name('save.user');
+Route::get('/logout',function(){
+    Auth::logout();
+    return redirect(route('home'));
+})->name('logout');
 // explained Already
-Auth::routes(); // login , // register , // reset 
+//Auth::routes(); // login , // register , // reset 
 // after login
 Route::middleware('auth')->prefix('provider')->namespace('provider')->group(function(){
     Route::get('/dashboard', 'pagesController@dashboard')->name('provider.dashboard');
@@ -40,10 +47,10 @@ Route::middleware('auth')->prefix('provider')->namespace('provider')->group(func
     Route::get('/settings', 'pagesController@settings')->name('provider.settings');  
 
 });
-// Route::middleware('seeker')->group(function(){
+Route::middleware('seeker')->namespace('seeker')->prefix('seeker')->group(function(){
+    Route::get('/dashbaord','PagesController@dashbaord')->name('seeker.dashbaord');
+});
+// // for admin ..
+// Route::middleware('admin')->prefix('admin')->group(function(){
 
 // });
-// Route::middleware('admin')->group(function(){
-
-// });
-Route::get('/home', 'homeController@index')->name('home');

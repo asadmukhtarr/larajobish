@@ -5,7 +5,7 @@
     <div class="dashboard-content">
         <div class="dashboard-header clearfix">
             <div class="row">
-                <div class="col-sm-12 col-md-6"><h4>Hello , {{ Auth::user()->name }}</h4></div>
+                <div class="col-sm-12 col-md-6"><h4>Hello ,{{ Auth::user()->name }}</h4></div>
                 <div class="col-sm-12 col-md-6">
                     <div class="breadcrumb-nav">
                         <ul>

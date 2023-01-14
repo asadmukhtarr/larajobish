@@ -8,5 +8,5 @@
 <h4>Account</h4>
 <ul>
     <li><a href="{{ route('provider.settings') }}"><i class="flaticon-user"></i>Edit Profile</a></li>
-    <li><a href="index-2.html"><i class="flaticon-logout"></i>Logout</a></li>
+    <li><a href="{{ route('logout') }}"><i class="flaticon-logout"></i>Logout</a></li>
 </ul>

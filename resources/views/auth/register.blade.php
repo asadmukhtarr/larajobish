@@ -9,7 +9,7 @@
                     <div class="card-header">{{ __('Register') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="{{ route('save.user') }}">
                             @csrf
 
                             <div class="row mb-3">
@@ -61,6 +61,21 @@
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('You Are?') }}</label>
+
+                                <div class="col-md-6">
+                                    <label for="">Job Provier</label>
+                                    <input type="radio" value="0" name="type" />
+                                    <label for="">Job Seeker</label>
+                                    <input type="radio" value="1" name="type" />
+                                </div>
+                                @error('type')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
@@ -76,4 +91,5 @@
         </div>
     </div>
 </div>
+<br />
 @endsection
