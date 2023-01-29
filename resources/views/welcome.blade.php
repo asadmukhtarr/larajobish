@@ -137,117 +137,30 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
+                @foreach($jobs as $job)
                 <div class="job-box">
-                    <div class="company-logo">
-                        <img src="img/company-logo/logo-1.png" alt="logo">
-                    </div>
                     <div class="description">
                         <div class="float-left">
-                            <h5 class="title"><a href="job-details.html">Restaurant General Manager</a></h5>
+                            <h5 class="title"><a href="job-details.html">{{ $job->title }}</a></h5>
                             <div class="candidate-listing-footer">
                                 <ul>
                                     <li><i class="flaticon-work"></i> Hotel</li>
-                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                    <li><i class="flaticon-time"></i> Full Time</li>
+                                    <li><i class="flaticon-pin"></i>{{ $job->city }}</li>
+                                    <li><i class="flaticon-time"></i> {{ $job->type }}</li>
                                 </ul>
                                 <h6>Deadline: Jan 31, 2019</h6>
                             </div>
                         </div>
                         <div class="div-right">
-                            <a href="#" class="apply-button">Apply Now</a>
+                            <a href="{{ route('apply.job', $job->id) }}" class="apply-button">Apply Now</a>
                             <a href="#"><i class="flaticon-heart favourite"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="job-box">
-                    <div class="company-logo">
-                        <img src="img/company-logo/logo-3.png" alt="logo">
-                    </div>
-                    <div class="description">
-                        <div class="float-left">
-                            <h5 class="title"><a href="job-details.html">Marketing Dairector</a></h5>
-                            <div class="candidate-listing-footer">
-                                <ul>
-                                    <li><i class="flaticon-work"></i> Red</li>
-                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                    <li><i class="flaticon-time"></i> Part Time</li>
-                                </ul>
-                                <h6>Deadline: Jan 31, 2019</h6>
-                            </div>
-                        </div>
-                        <div class="div-right">
-                            <a href="#" class="apply-button">Apply Now</a>
-                            <a href="#"><i class="flaticon-heart favourite"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="job-box">
-                    <div class="company-logo">
-                        <img src="img/company-logo/logo-2.png" alt="logo">
-                    </div>
-                    <div class="description">
-                        <div class="float-left">
-                            <h5 class="title"><a href="job-details.html">Dhaka Event Support Specialist</a></h5>
-                            <div class="candidate-listing-footer">
-                                <ul>
-                                    <li><i class="flaticon-work"></i> Xero</li>
-                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                    <li><i class="flaticon-time"></i> Temporary</li>
-                                </ul>
-                                <h6>Deadline: Jan 31, 2019</h6>
-                            </div>
-                        </div>
-                        <div class="div-right">
-                            <a href="#" class="apply-button">Apply Now</a>
-                            <a href="#"><i class="flaticon-heart favourite"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="job-box">
-                    <div class="company-logo">
-                        <img src="img/company-logo/logo-4.png" alt="logo">
-                    </div>
-                    <div class="description">
-                        <div class="float-left">
-                            <h5 class="title"><a href="job-details.html">Green Development Marketer</a></h5>
-                            <div class="candidate-listing-footer">
-                                <ul>
-                                    <li><i class="flaticon-work"></i> Zooms</li>
-                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                    <li><i class="flaticon-time"></i> Full Time</li>
-                                </ul>
-                                <h6>Deadline: Jan 31, 2019</h6>
-                            </div>
-                        </div>
-                        <div class="div-right">
-                            <a href="#" class="apply-button">Apply Now</a>
-                            <a href="#"><i class="flaticon-heart favourite"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="job-box mb-30">
-                    <div class="company-logo">
-                        <img src="img/company-logo/logo-5.png" alt="logo">
-                    </div>
-                    <div class="description">
-                        <div class="float-left">
-                            <h5 class="title"><a href="job-details.html">Application Developer For Mobile</a></h5>
-                            <div class="candidate-listing-footer">
-                                <ul>
-                                    <li><i class="flaticon-work"></i> Hexagon</li>
-                                    <li><i class="flaticon-pin"></i> New York City</li>
-                                    <li><i class="flaticon-time"></i> Part Time</li>
-                                </ul>
-                                <h6>Deadline: Jan 31, 2019</h6>
-                            </div>
-                        </div>
-                        <div class="div-right">
-                            <a href="#" class="apply-button">Apply Now</a>
-                            <a href="#"><i class="flaticon-heart favourite"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center clearfix">
+
+                @endforeach
+                <br />
+                <div class="text-center clearfix mt-2">
                     <a href="job-list.html" class="browse-all">Browse All Jobs</a>
                 </div>
             </div>

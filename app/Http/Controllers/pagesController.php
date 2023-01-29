@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\job;
 use Auth;
 
 class pagesController extends Controller
@@ -12,7 +13,8 @@ class pagesController extends Controller
     // home ..
     public function home()
     {
-        return view('welcome');
+        $jobs = job::orderby('id','desc')->get();
+        return view('welcome',compact('jobs'));
     }
     // about 
     public function about()

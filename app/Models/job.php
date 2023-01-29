@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class job extends Model
 {
     use HasFactory;
+    public function applications(){
+        
+        return $this->hasMany(application::class);
+    }
 }

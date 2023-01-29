@@ -47,10 +47,25 @@ Route::middleware('auth')->prefix('provider')->namespace('provider')->group(func
     Route::get('/settings', 'pagesController@settings')->name('provider.settings');  
 
 });
+
+Route::middleware('seeker')->namespace('seeker')->group(function(){
+    Route::get('/apply/{id}','PagesController@apply')->name('apply.job');
+    Route::post('/apply/save/{id}','PagesController@applysave')->name('apply.save');
+});
+
 Route::middleware('seeker')->namespace('seeker')->prefix('seeker')->group(function(){
     Route::get('/dashbaord','PagesController@dashbaord')->name('seeker.dashbaord');
+    
 });
 // // for admin ..
-// Route::middleware('admin')->prefix('admin')->group(function(){
-
-// });
+Route::prefix('admin')->namespace('admin')->group(function(){
+    Route::get('/dashboard','adminController@dashbaord')->name('admin.dashbaord');
+    Route::prefix('users')->group(function(){
+        Route::get('/seekers','adminController@seekers')->name('admin.seekers');
+        Route::get('/provider','adminController@provider')->name('admin.provider');
+        Route::get('/admin','adminController@admin')->name('admin.admin');
+    });
+    Route::get('/applications','adminController@applications')->name('admin.application');
+    Route::get('/jobs','adminController@jobs')->name('admin.jobs');
+    Route::get('/settings','adminController@setting')->name('admin.setting');
+});

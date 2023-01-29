@@ -42,7 +42,9 @@ class jobsController extends Controller
     }
     // jobs 
     public function jobs(){
-        $jobs = job::where('user_id',Auth::id())->orderby('id','desc')->get();
+        $user = Auth::user();
+        $jobs = $user->jobs;
+        //$jobs = job::where('user_id',Auth::id())->orderby('id','desc')->get();
         //return $jobs;
         return view('provider.jobs',compact('jobs'));
     }
